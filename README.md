@@ -15,18 +15,31 @@
 
 ```mermaid
 graph TD
-  Client[[Client]]
-  UserService[[User Service]]
-  NotificationService[[Notification Service]]
+  Client[Client]
+  UserService[User Service]
+  NotificationService[Notification Service]
   PgSQL[(PostgreSQL)]
   NATS[(NATS)]
-  SocketIO[[Socket.io]]
+  SocketIO[Socket.io]
 
   Client -->|HTTP| UserService
   UserService --> PgSQL
-  UserService -->|Event (NATS)| NATS
+  UserService -->|Event| NATS
   NATS --> NotificationService
   NotificationService -->|WS| Client
+```
+
+📌 **Описание компонентов:**
+
+- **Client** — отправляет HTTP-запросы в `User Service` и слушает `Socket.IO` события.
+- **User Service** — основная бизнес-логика, работает с PostgreSQL и публикует события через NATS.
+- **Notification Service** — подписан на события из NATS и отправляет push-уведомления через WebSocket.
+- **NATS** — брокер сообщений между сервисами.
+- **Socket.IO** — используется `Notification Service` для real-time сообщений пользователям.
+- **PostgreSQL** — хранит данные пользователей и транзакций.
+
+```
+
 ```
 
 📌 **Описание компонентов:**
