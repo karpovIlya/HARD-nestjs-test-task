@@ -38,10 +38,6 @@ graph TD
 - **Socket.IO** — используется `Notification Service` для real-time сообщений пользователям.
 - **PostgreSQL** — хранит данные пользователей и транзакций.
 
-```
-
-```
-
 📌 **Описание компонентов:**
 
 - **Client** — отправляет HTTP-запросы в `User Service` и слушает `Socket.IO` события.
