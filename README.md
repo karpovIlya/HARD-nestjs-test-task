@@ -86,8 +86,6 @@ graph TD
    NATS_PASSWORD=wsbe
    NATS_PORT=4222
    NATS_HOST=127.0.0.1
-
-
    ```
 3. **Запустите проект с помощью Docker Compose:**
 
